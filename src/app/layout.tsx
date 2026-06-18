@@ -9,6 +9,7 @@ import PageTransition from "@/components/shared/PageTransition";
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
@@ -49,6 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
+      <meta name="google-site-verification" content="VJ6WZOTBC39xZiZGHbJTVjxEsy1XBI2bniFUze_HIzQ" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -79,6 +81,7 @@ export default function RootLayout({
           <Footer />
           <ScrollToTop />
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
