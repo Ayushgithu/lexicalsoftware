@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/shared/ScrollToTop";
 import PageTransition from "@/components/shared/PageTransition";
 import SplashScreen from "@/components/shared/SplashScreen";
+import JsonLdScript from "@/components/shared/JsonLdScript";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -148,16 +149,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
+      <head />
       <body
+        suppressHydrationWarning
         className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} font-body bg-base text-ink antialiased`}
       >
+        <JsonLdScript data={jsonLd} />
         <Analytics />
         <SpeedInsights />
         <SplashScreen />

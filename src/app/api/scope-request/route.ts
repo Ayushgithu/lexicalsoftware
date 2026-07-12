@@ -19,7 +19,7 @@ export async function POST(req: Request) {
 
     // Email 1 — to Lexical Software
     const { error: e1 } = await resend.emails.send({
-      from: "Lexical Software <onboarding@resend.dev>",
+      from: "Lexical Software <email@lexicalsoftware.in>",
       to: ["softwarelexical@gmail.com"],
       reply_to: email,
       subject: `[${scopeId}] New Scope — ${complexity} ${projectType}`,
@@ -64,7 +64,7 @@ export async function POST(req: Request) {
     // Email 2 — confirmation to client
     if (email) {
       const { error: e2 } = await resend.emails.send({
-        from: "Lexical Software <onboarding@resend.dev>",
+        from: "Lexical Software <email@lexicalsoftware.in>",
         to: [email],
         reply_to: "softwarelexical@gmail.com",
         subject: `Your Scope Request Received — ${scopeId}`,
