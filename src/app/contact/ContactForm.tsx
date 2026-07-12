@@ -153,6 +153,7 @@ export default function ContactForm() {
             src="/images/logo/lexical-mark.jpg"
             alt="Lexical Software logo"
             fill
+            sizes="64px"
             className="object-cover"
           />
         </span>
