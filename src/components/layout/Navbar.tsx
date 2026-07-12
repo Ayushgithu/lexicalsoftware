@@ -21,9 +21,9 @@ export default function Navbar() {
   //   return () => window.removeEventListener("scroll", onScroll);
   // }, []);
 
-  // useEffect(() => {
-  //   setOpen(false);
-  // }, [pathname]);
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
   return (
     <header className=" fixed top-0 left-0 right-0 z-50  ">
       <nav
@@ -143,7 +143,7 @@ export default function Navbar() {
           </ul>
           <Link
             href="/contact"
-            className="mt-4  rounded-md bg-blue-600  text-center text-md font-semibold text-white"
+            className="mt-4 px-2 py-2  rounded-md bg-blue-600  text-center text-md font-semibold text-white"
           >
             Contact Us
           </Link>
