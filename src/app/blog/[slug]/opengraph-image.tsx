@@ -1,7 +1,6 @@
 import { ImageResponse } from "next/og";
 import { blogPosts } from "@/data/blog";
 
-export const runtime = "edge";
 export const alt = "Lexical Software Blog";
 export const size = {
   width: 1200,

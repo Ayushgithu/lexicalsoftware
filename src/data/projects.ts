@@ -59,6 +59,48 @@ export const projectTechnologies = [
 ];
 
 export const projects: Project[] = [
+{
+  slug: "uday-clinic-jhansi",
+  name: "Uday Clinic Jhansi",
+  category: "Healthcare",
+  featured: true,
+  technologies: [
+    "Next.js",
+    "MongoDB",
+    "Tailwind CSS",
+    "Vercel"
+  ],
+  description:
+    "A modern healthcare website for Uday Clinic Jhansi that enables patients to learn about services, book appointments, and connect with doctors through a responsive web experience.",
+
+  cloudinaryId: "v1782394054/hospital-landing-page-image.png",
+
+  overview:
+    "Uday Clinic Jhansi is a complete healthcare platform designed to improve the clinic's online presence. The website provides information about doctors, medical services, clinic facilities, and allows patients to book appointments through a clean and mobile-friendly interface.",
+
+  problem:
+    "The clinic lacked a professional online platform for showcasing its services and managing patient appointment requests, making it difficult for new patients to access information and contact the clinic.",
+
+  solution:
+    "Developed a responsive healthcare website using Next.js and Tailwind CSS with MongoDB integration. The platform includes online appointment booking, doctor profiles, service information, contact forms, and an admin-friendly backend for managing patient requests.",
+
+  features: [
+    "Online appointment booking",
+    "Doctor profile and specialization pages",
+    "Medical services showcase",
+    "Responsive design for all devices",
+    "Contact and enquiry forms",
+    "Patient-friendly navigation",
+    "SEO optimized pages",
+    "Fast deployment with Vercel"
+  ],
+
+  results: [
+    { value: "100%", label: "Responsive Design" },
+    { value: "24/7", label: "Appointment Requests" },
+    { value: "SEO", label: "Optimized Website" }
+  ]
+},
   {
     slug: "the-aaruh",
     name: "The Aaruh",

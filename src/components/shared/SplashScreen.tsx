@@ -58,6 +58,7 @@ export default function SplashScreen() {
           src="/images/logo/lexical-mark.jpg"
           alt="Lexical Software"
           fill
+          sizes="80px"
           className="object-cover"
           priority
         />

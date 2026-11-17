@@ -35,9 +35,9 @@ export default function Footer() {
                 <span className="font-display text-lg font-extrabold tracking-wider text-ink">
                   LEXICAL
                 </span>
-                <span className="mt-1 font-mono text-[9px] font-bold tracking-widest text-lexical-orange">
-                  SOFTWARE
-                </span>
+                <span className="-mt-1.5 font-mono text-[14.5px] font-bold tracking-widest text-lexical-orange">
+              SOFTWARE
+            </span>
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-muted">

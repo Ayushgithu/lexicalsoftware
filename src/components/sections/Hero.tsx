@@ -14,19 +14,19 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden">
       {/* Ambient glows */}
-      <div className="glow-blob animate-drift -translate-x-1/2 -translate-y-1/2 left-1/4 top-0 h-[450px] w-[450px] bg-blue-100/40" />
+      <div className="glow-blob animate-drift absolute left-1/4 top-0 h-[450px] w-[450px] -translate-x-1/2 -translate-y-1/2 bg-blue-100/40" />
       <div
-        className="glow-blob animate-drift -translate-x-1/2 -translate-y-1/2 right-0 top-1/3 h-[500px] w-[500px] translate-x-1/3 bg-gradient-to-br from-violet-200/40 to-pink-200/30"
+        className="glow-blob animate-drift absolute right-0 top-1/3 h-[500px] w-[500px] translate-x-1/3 -translate-y-1/2 bg-gradient-to-br from-violet-200/40 to-pink-200/30"
         style={{ animationDelay: "1.5s" }}
       />
       <div
-        className="glow-blob animate-drift left-1/3 bottom-0 h-[350px] w-[350px] bg-indigo-100/30"
+        className="glow-blob animate-drift absolute bottom-0 left-1/3 h-[350px] w-[350px] bg-indigo-100/30"
         style={{ animationDelay: "3s" }}
       />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-10 lg:grid-cols-12 lg:gap-8 lg:px-8 lg:py-16">
-        {/* Left: copy */}
-        <div className="space-y-8 lg:col-span-5">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 py-16 lg:grid-cols-2">
+        {/* Left Content */}
+        <div className="mx-auto w-full max-w-xl space-y-8">
           <div
             className="will-fade-up flex flex-col gap-3 sm:flex-row sm:items-center"
             style={{ animationDelay: "0ms" }}
@@ -35,6 +35,7 @@ export default function Hero() {
               <Rocket className="mr-1.5 h-3.5 w-3.5 text-lexical-orange" />
               Elite Software Startup &amp; Consulting
             </Eyebrow>
+
             <AvailabilityBadge />
           </div>
 
@@ -52,9 +53,8 @@ export default function Hero() {
             style={{ animationDelay: "200ms" }}
           >
             We design, build, and ship full-stack web applications, scalable
-            APIs, and cloud-native infrastructure &mdash; from Next.js
-            frontends to Java/Spring Boot backends, deployed and monitored
-            end to end.
+            APIs, and cloud-native infrastructure — from Next.js frontends to
+            Java/Spring Boot backends, deployed and monitored end to end.
           </p>
 
           <div
@@ -63,11 +63,12 @@ export default function Hero() {
           >
             <Link
               href="/contact"
-              className="shimmer-sweep group inline-flex items-center rounded-xl bg-lexical-gradient px-6 py-4 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-500/30 active:scale-[0.98]"
+              className="shimmer-sweep group inline-flex items-center rounded-md bg-lexical-gradient px-6 py-4 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-500/30 active:scale-[0.98]"
             >
               Get a Quote
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
+
             <SecondaryButton href="/portfolio">
               <FolderOpen className="h-4 w-4 text-lexical-orange" />
               View Our Work
@@ -91,9 +92,9 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right: interactive system diagram */}
+        {/* Right Content */}
         <div
-          className="will-fade-up lg:col-span-7"
+          className="will-fade-up mx-auto flex w-full justify-center"
           style={{ animationDelay: "250ms" }}
         >
           <SystemDiagram />

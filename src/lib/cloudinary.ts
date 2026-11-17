@@ -32,10 +32,9 @@ export function cloudinaryUrl(
   if (options.height) transformations.push(`h_${options.height}`);
   if (options.crop) transformations.push(`c_${options.crop}`);
 
-  return `https://res.cloudinary.com/${cloudName}/image/upload/${transformations.join(
-    ","
-  )}/${publicId}`;
+  return `https://res.cloudinary.com/${cloudName}/image/upload/${transformations.join(",")}/${publicId}`;
 }
+// https://res.cloudinary.com/lexicalsoftware/image/upload/v1782394054/hospital-landing-page-image.png
 
 // True once Cloudinary is configured, so components can decide whether to
 // render an <Image> or a placeholder block.

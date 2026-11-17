@@ -26,6 +26,35 @@ export interface TeamMember {
 
 export const team: TeamMember[] = [
   {
+    slug: "akash-gupta",
+    name: "Akash Gupta",
+    role: "Sr Consultant",
+    experience: "9+ years",
+    email: "agupta2208@gmail.com",
+    cloudinaryId: "",
+    resumeUrl: "/resumes/kuldeep-singh-rajpoot.pdf",
+    bio: "Specializes in strategic consulting, technical guidance, and delivering effective solutions for complex business needs.",    availability: "available",
+    quote: "Turning challenges into clear strategies and practical solutions.",
+  currentlyBuilding: "Strategic solutions that help businesses improve and grow",
+
+funFacts: [
+  "Believes every problem has a practical solution",
+  "Turns complex challenges into simple strategies",
+  "Always asks the right questions before making decisions",
+],
+    skills: [
+      { name: "Java", level: 100 },
+      { name: "Spring Boot", level: 100 },
+      { name: "MySQL", level: 95 },
+      { name: "AWS", level: 95 },
+      { name: "Docker", level: 95 },
+      { name: "Git", level: 98 },
+    ],
+    social: {
+      linkedin: "https://www.linkedin.com/in/kuldeepsinghrajpoot",
+    },
+  },
+  {
     slug: "kuldeep-singh-rajpoot",
     name: "Kuldeep Singh Rajpoot",
     role: "Developer",

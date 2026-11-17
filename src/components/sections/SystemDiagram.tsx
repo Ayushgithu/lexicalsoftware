@@ -38,7 +38,7 @@ export default function SystemDiagram() {
   const getNode = (id: string) => nodes.find((n) => n.id === id)!;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-panel-border bg-panel shadow-xl shadow-lexical-indigo/5">
+    <div className="relative overflow-hidden rounded-md border border-panel-border bg-panel shadow-sm shadow-lexical-indigo/5">
       {/* Window header */}
       <div className="flex items-center justify-between border-b border-line bg-lexical-vivid px-5 py-3">
         <div className="flex items-center gap-4">
