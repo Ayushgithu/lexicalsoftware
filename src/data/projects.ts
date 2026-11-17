@@ -10,6 +10,13 @@ export interface Project {
   technologies: string[];
   description: string;
   cloudinaryId?: string;
+  // Temporary placeholder image (any https URL on an allowed host). Used only
+  // when cloudinaryId is empty. Replace later by setting cloudinaryId.
+  imageUrl?: string;
+  // Live website URL. Shows a "Live Site" link on card and detail page.
+  liveUrl?: string;
+  // Shows the "Powered by Lexical Software" highlight on card and detail page.
+  poweredByLexical?: boolean;
   featured?: boolean;
   overview: string;
   problem: string;
@@ -26,6 +33,9 @@ export const projectCategories = [
   "Mobile App",
   "API / Backend",
   "Dashboard",
+  "Business Website",
+  "Healthcare",
+  "AI & Education",
 ];
 
 export const projectTechnologies = [
@@ -42,216 +52,368 @@ export const projectTechnologies = [
   "AWS",
   "PHP",
   "Redis",
+  "TypeScript",
+  "Google Sheets",
+  "Cloudinary",
+  "Vercel",
 ];
 
 export const projects: Project[] = [
   {
-    slug: "fieldops-dashboard",
-    name: "FieldOps Dashboard",
-    category: "Dashboard",
-    featured: true,
-    technologies: ["Next.js", "Java", "Spring Boot", "PostgreSQL"],
-    description:
-      "An internal operations dashboard for a logistics company to track field technician schedules, job statuses, and inventory in real time.",
-    cloudinaryId: "", // e.g. "projects/fieldops-dashboard"
-    overview:
-      "FieldOps replaced a spreadsheet-based scheduling process with a live dashboard that dispatchers and technicians both use \u2014 dispatchers assign jobs and see technician locations, while technicians update job status from a mobile-friendly view.",
-    problem:
-      "The client coordinated 30+ field technicians using shared spreadsheets and phone calls, which led to double-bookings, missed jobs, and no visibility into daily progress.",
-    solution:
-      "We built a Spring Boot API backed by PostgreSQL for job and technician data, with a Next.js dashboard for dispatchers and a lightweight mobile-friendly view for technicians to update job status and add notes from the field.",
-    features: [
-      "Real-time job assignment and status tracking",
-      "Technician calendar with drag-and-drop scheduling",
-      "Role-based access for dispatchers vs technicians",
-      "Daily summary reports exported as PDF",
-    ],
-    results: [
-      { value: "40%", label: "Fewer scheduling conflicts" },
-      { value: "3hrs", label: "Saved per dispatcher daily" },
-      { value: "30+", label: "Technicians onboarded" },
-    ],
-  },
-  {
-    slug: "shelfsense-inventory",
-    name: "ShelfSense Inventory",
-    category: "SaaS",
-    technologies: ["Next.js", "Node.js", "MongoDB", "AWS"],
-    description:
-      "A multi-tenant SaaS platform for small retailers to track stock levels across multiple store locations and get low-stock alerts.",
-    cloudinaryId: "", // e.g. "projects/shelfsense-inventory"
-    overview:
-      "ShelfSense lets retail chains manage inventory across locations from one dashboard, with barcode scanning support and automated reorder alerts when stock runs low.",
-    problem:
-      "A regional retail chain managed inventory separately per store with no shared visibility, leading to overstock at some locations and stockouts at others.",
-    solution:
-      "We built a multi-tenant Next.js application with a Node.js API and MongoDB, supporting per-location inventory views, barcode-based stock updates, and email/SMS alerts when items fall below a configurable threshold.",
-    features: [
-      "Multi-location inventory tracking with role-based access",
-      "Barcode scanning for fast stock updates",
-      "Automated low-stock email and SMS alerts",
-      "CSV import/export for bulk inventory management",
-    ],
-    results: [
-      { value: "25%", label: "Reduction in stockouts" },
-      { value: "5", label: "Store locations connected" },
-      { value: "99.9%", label: "Uptime since launch" },
-    ],
-  },
-  {
-    slug: "lexicart-storefront",
-    name: "LexiCart Storefront",
+    slug: "the-aaruh",
+    name: "The Aaruh",
     category: "E-Commerce",
-    technologies: ["Next.js", "PostgreSQL", "Tailwind CSS", "AWS"],
-    description:
-      "A custom e-commerce storefront for a D2C skincare brand, including product catalog, cart, checkout, and order management.",
-    cloudinaryId: "", // e.g. "projects/lexicart-storefront"
-    overview:
-      "LexiCart is a fast, SEO-friendly storefront built for a direct-to-consumer skincare brand moving off a templated platform, with a custom admin panel for managing products and orders.",
-    problem:
-      "The client's previous templated storefront was slow on mobile, difficult to customize, and charged high transaction fees that ate into margins.",
-    solution:
-      "We built a server-rendered Next.js storefront with a PostgreSQL-backed product catalog, a custom checkout flow integrated with a payment gateway, and an admin panel for managing products, orders, and discount codes.",
-    features: [
-      "Server-rendered product pages for fast loads and SEO",
-      "Custom checkout with saved addresses and order history",
-      "Admin panel for products, orders, and discount codes",
-      "Mobile-first responsive design",
+    featured: true,
+    liveUrl: "https://theaaruh.in",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "MongoDB",
+      "Cloudinary",
+      "Razorpay",
     ],
+    description:
+      "A full-fledged e-commerce store for The Aaruh, a handcrafted ethnic and everyday wear brand, with a complete admin dashboard to manage products, orders, banners and customers.",
+
+    imageUrl:
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&auto=format&fit=crop&q=80",
+
+    overview:
+      "The Aaruh is a clothing brand from Gurgaon selling suit sets, sarees, co-ords, kids wear and twinning wear. We built the complete online store along with a custom admin dashboard, so the owner can run the entire business, from catalogue to deliveries, without any technical help.",
+
+    problem:
+      "The brand was selling through social media and WhatsApp, which meant manual order taking, scattered product photos, no proper payment flow and no way to track customers or stock in one place.",
+
+    solution:
+      "Built a fast storefront in Next.js, TypeScript and Tailwind CSS with MongoDB as the database and Cloudinary for image and video delivery. Razorpay powers UPI, card and netbanking payments alongside cash on delivery. A full admin dashboard lets the owner manage products, collections, banners, orders, coupons and customer data in real time.",
+
+    features: [
+      "Product catalogue with collections, categories and filters",
+      "Shop by video and shoppable lookbook",
+      "Wishlist, cart and quick add to bag",
+      "Razorpay payments (UPI, cards, netbanking) and cash on delivery",
+      "Order tracking page for customers",
+      "Customer accounts and sign in",
+      "Size guide, exchange and shipping policy pages",
+      "WhatsApp chat integration for sizing help",
+      "Full admin dashboard for products, orders, banners and customers",
+      "Cloudinary image and video management",
+      "Mobile-first design and SEO optimized pages",
+    ],
+
     results: [
-      { value: "1.8s", label: "Average page load time" },
-      { value: "22%", label: "Increase in conversion rate" },
-      { value: "60%", label: "Lower transaction fees" },
+      { value: "Full", label: "Admin Dashboard" },
+      { value: "4+", label: "Payment Options" },
+      { value: "100%", label: "Mobile Responsive" },
     ],
   },
   {
-    slug: "clinicflow-booking",
-    name: "ClinicFlow Booking",
+    slug: "uday-clinic-jhansi",
+    name: "Uday Clinic Jhansi",
+    category: "Healthcare",
+    featured: true,
+    poweredByLexical: true,
+    technologies: ["Next.js", "MongoDB", "Tailwind CSS", "Vercel"],
+    description:
+      "A modern healthcare website for Uday Clinic Jhansi that enables patients to learn about services, book appointments, and connect with doctors through a responsive web experience.",
+
+    cloudinaryId: "v1782394054/hospital-landing-page-image.png",
+
+    overview:
+      "Uday Clinic Jhansi is a complete healthcare platform designed to improve the clinic's online presence. The website provides information about doctors, medical services, clinic facilities, and allows patients to book appointments through a clean and mobile-friendly interface.",
+
+    problem:
+      "The clinic lacked a professional online platform for showcasing its services and managing patient appointment requests, making it difficult for new patients to access information and contact the clinic.",
+
+    solution:
+      "Developed a responsive healthcare website using Next.js and Tailwind CSS with MongoDB integration. The platform includes online appointment booking, doctor profiles, service information, contact forms, and an admin-friendly backend for managing patient requests.",
+
+    features: [
+      "Online appointment booking",
+      "Doctor profile and specialization pages",
+      "Medical services showcase",
+      "Responsive design for all devices",
+      "Contact and enquiry forms",
+      "Patient-friendly navigation",
+      "SEO optimized pages",
+      "Fast deployment with Vercel",
+    ],
+
+    results: [
+      { value: "100%", label: "Responsive Design" },
+      { value: "24/7", label: "Appointment Requests" },
+      { value: "SEO", label: "Optimized Website" },
+    ],
+  },
+  {
+    slug: "socialbug-media",
+    name: "SocialBug Media",
+    category: "Business Website",
+    liveUrl: "https://socialbugmedia.in",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Google Sheets",
+    ],
+    description:
+      "A bold, animated website for SocialBug Media, a creator-led influencer marketing agency, showcasing services, campaign case studies and a creator network of 1000+ influencers.",
+
+    imageUrl:
+      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&auto=format&fit=crop&q=80",
+
+    overview:
+      "SocialBug Media helps SaaS companies, startups and consumer brands grow through a curated network of 1000+ creators across LinkedIn, X, Instagram and YouTube. The website is the agency's main sales tool, built to convert brand visitors into campaign enquiries in two minutes.",
+
+    problem:
+      "The agency needed a site that matched the energy of its brand, proved its reach with real campaigns and brand logos, and made it easy for both brands and creators to get in touch.",
+
+    solution:
+      "Designed and built a dark, motion-rich website with Next.js, TypeScript and Tailwind CSS. Service pages, case studies, testimonials and a creator onboarding form are all included, and every enquiry and creator application is saved directly into Google Sheets so the team can follow up instantly.",
+
+    features: [
+      "Animated hero and scrolling creator and brand showcases",
+      "Dedicated pages for each service",
+      "Case study pages for featured campaigns",
+      "Testimonials and brand logo wall",
+      "Quick 2-minute brand enquiry form",
+      "Creator sign-up form (Get Listed as a Creator)",
+      "Google Sheets integration for leads and applications",
+      "SEO optimized pages with rich metadata",
+      "Fully responsive, performance focused design",
+    ],
+
+    results: [
+      { value: "1000+", label: "Creators Showcased" },
+      { value: "100+", label: "Campaigns Presented" },
+      { value: "2 min", label: "To Start a Campaign" },
+    ],
+  },
+  {
+    slug: "qrtoprint",
+    name: "QRtoPrint",
+    category: "SaaS",
+    poweredByLexical: true,
+    liveUrl: "https://qr.lexicalsoftware.in",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Google Sheets",
+    ],
+    description:
+      "QR printing software for cyber cafes, xerox shops and CSC centers. Customers scan a QR, upload files from their phone, pay by UPI and the print comes out automatically.",
+
+    imageUrl:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80",
+
+    overview:
+      "QRtoPrint removes the queue from print counters. Customers scan the shop's QR code, upload PDFs or photos from the phone browser, choose print options, pay and collect their pages, while the shop owner manages everything from a live dashboard.",
+
+    problem:
+      "Cyber cafes and xerox shops were receiving files on WhatsApp and pen drives, which filled up storage, spread viruses, left customer documents on the PC and created long queues at rush hour.",
+
+    solution:
+      "Built a complete SaaS with Next.js, TypeScript and Tailwind CSS: a no-app customer upload page, a shop dashboard with live orders and a Windows print agent that sends jobs to the right printer. UPI payments go straight to the shop owner's own UPI ID with 0% commission, and files are deleted once the order is collected.",
+
+    features: [
+      "Customer upload by QR scan, no app or login needed",
+      "Up to 10 PDFs or photos per order with page ranges",
+      "Pricing shown before payment with shop-defined rates",
+      "Direct UPI payment with 0% commission or pay at counter",
+      "Smart routing to any Windows printer by size and colour",
+      "Passport and multi-photo layouts",
+      "Live order alerts with sound on the shop dashboard",
+      "Auto-delete of customer files after collection",
+      "Downloadable QR poster for the shop counter",
+      "Hindi and English customer interface",
+      "Daily earnings and orders overview",
+    ],
+
+    results: [
+      { value: "0%", label: "Commission on Payments" },
+      { value: "10", label: "Files per Order" },
+      { value: "10 min", label: "Shop Setup Time" },
+    ],
+  },
+  {
+    slug: "pradeep-csc",
+    name: "Pradeep CSC & Digital Seva Kendra",
     category: "Web App",
-    technologies: ["Next.js", "Java", "Spring Boot", "MySQL"],
-    description:
-      "An appointment booking and patient management web app for a multi-doctor clinic, replacing phone-based scheduling.",
-    cloudinaryId: "", // e.g. "projects/clinicflow-booking"
-    overview:
-      "ClinicFlow gives patients an online booking calendar showing real-time doctor availability, while clinic staff manage appointments, patient records, and reminders from a single dashboard.",
-    problem:
-      "The clinic relied entirely on phone calls for booking, leading to long hold times for patients and frequent double-bookings across its three doctors.",
-    solution:
-      "We built a Spring Boot backend with MySQL to manage doctor schedules and patient records, paired with a Next.js frontend offering a public booking calendar and a staff dashboard for managing appointments and sending automated SMS reminders.",
-    features: [
-      "Public booking calendar with real-time availability",
-      "Staff dashboard for appointments and patient records",
-      "Automated SMS appointment reminders",
-      "Doctor-specific schedules and time-off management",
+    poweredByLexical: true,
+    liveUrl: "https://pradeepcsc.lexicalsoftware.in",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Google Sheets",
     ],
+    description:
+      "A digital service portal for Pradeep CSC that lists government and banking services, takes online service requests and offers free tools like image merge and scan to PDF.",
+
+    imageUrl:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&auto=format&fit=crop&q=80",
+
+    overview:
+      "Pradeep CSC & Digital Seva Kendra is a local Common Service Centre in Mahoba, Uttar Pradesh, serving citizens with Aadhaar, PAN, banking, passport, insurance and certificate services. The website brings the centre online and adds handy tools that bring people back.",
+
+    problem:
+      "The centre depended on walk-in customers and word of mouth. Citizens had no easy way to see available services, send a request or prepare documents like Aadhaar scans in the right size before visiting.",
+
+    solution:
+      "Built a fast, mobile-first portal with Next.js, TypeScript and Tailwind CSS. Visitors can browse services, book a service request that lands in Google Sheets, and use free utilities such as Merge Two Image, Scan to PDF and a Passbook tool.",
+
+    features: [
+      "Service pages for Aadhaar, PAN, banking, passport, insurance and certificates",
+      "Book a Service request form saved to Google Sheets",
+      "Merge Two Image tool to combine card front and back under 100 KB",
+      "Scan to PDF tool for multiple documents",
+      "Passbook tool",
+      "Government portal quick links",
+      "WhatsApp and phone contact with working hours",
+      "Promotional banners for key services",
+      "Fully responsive and easy to use on low-end phones",
+    ],
+
     results: [
-      { value: "50%", label: "Fewer no-shows" },
-      { value: "3", label: "Doctor schedules managed" },
-      { value: "24/7", label: "Online booking availability" },
+      { value: "8+", label: "Services Listed" },
+      { value: "3", label: "Free Utility Tools" },
+      { value: "24/7", label: "Online Service Requests" },
     ],
   },
   {
-    slug: "routewise-driver-app",
-    name: "RouteWise Driver App",
-    category: "Mobile App",
-    technologies: ["React Native", "Node.js", "PostgreSQL"],
-    description:
-      "A cross-platform mobile app for delivery drivers to view assigned routes, mark deliveries complete, and capture proof of delivery photos.",
-    cloudinaryId: "", // e.g. "projects/routewise-driver-app"
-    overview:
-      "RouteWise is a React Native app that gives delivery drivers their daily route, turn-by-turn stop order, and a simple way to confirm deliveries with a photo and signature \u2014 syncing back to the dispatch dashboard in real time.",
-    problem:
-      "Drivers were using paper delivery sheets and calling dispatch to confirm completions, causing delays in updating customers and no record of proof of delivery.",
-    solution:
-      "We built a React Native app (iOS and Android) with offline support for areas with poor signal, syncing route and delivery status to a Node.js API backed by PostgreSQL as soon as connectivity is available.",
-    features: [
-      "Daily route view with optimized stop order",
-      "Photo and signature capture for proof of delivery",
-      "Offline-first design with background sync",
-      "Push notifications for new or updated routes",
-    ],
-    results: [
-      { value: "35%", label: "Faster delivery confirmations" },
-      { value: "100%", label: "Deliveries with proof captured" },
-      { value: "2", label: "Platforms from one codebase" },
-    ],
-  },
-  {
-    slug: "billbox-invoicing-api",
-    name: "BillBox Invoicing API",
-    category: "API / Backend",
-    technologies: ["Java", "Spring Boot", "PostgreSQL", "AWS"],
-    description:
-      "A standalone invoicing and billing API used by a SaaS platform to generate, send, and track invoices for its customers.",
-    cloudinaryId: "", // e.g. "projects/billbox-invoicing-api"
-    overview:
-      "BillBox is a REST API that handles invoice generation, PDF rendering, payment status tracking, and webhook notifications \u2014 built as a service the client's existing platform calls for all billing operations.",
-    problem:
-      "The client's monolithic application had billing logic tightly coupled to its codebase, making it hard to update invoice templates or add new payment providers without risking the whole app.",
-    solution:
-      "We extracted billing into a standalone Spring Boot service with its own PostgreSQL database, exposing a REST API for invoice creation, PDF generation, and status webhooks, deployed independently on AWS so it can scale and deploy separately from the main app.",
-    features: [
-      "REST API for invoice creation and management",
-      "PDF invoice generation with customizable templates",
-      "Webhook notifications for payment status changes",
-      "Independent deployment and scaling on AWS",
-    ],
-    results: [
-      { value: "10k+", label: "Invoices processed monthly" },
-      { value: "99.95%", label: "API uptime" },
-      { value: "<200ms", label: "Average response time" },
-    ],
-  },
-  {
-    slug: "campushub-portal",
-    name: "CampusHub Portal",
+    slug: "pt-kisan-kumar",
+    name: "Pt. Kisan Kumar Astrology",
     category: "Web App",
-    technologies: ["Next.js", "PHP", "MySQL"],
-    description:
-      "A student portal for a coaching institute to share study materials, track attendance, and publish exam results.",
-    cloudinaryId: "", // e.g. "projects/campushub-portal"
-    overview:
-      "CampusHub gives students a single login to view their attendance, download study materials by subject, and check exam results, while staff upload content and mark attendance from an admin panel.",
-    problem:
-      "The institute shared materials over WhatsApp groups and announced results via printed notices, making it hard for students to find past materials or check their records.",
-    solution:
-      "We modernized the institute's existing PHP/MySQL backend and built a new Next.js portal on top of it, giving students organized access to materials, attendance, and results, with an admin panel for staff to manage content.",
-    features: [
-      "Student login with attendance and result history",
-      "Subject-organized study material downloads",
-      "Admin panel for uploading materials and marking attendance",
-      "Built on the institute's existing PHP/MySQL data",
+    liveUrl: "https://ptnkishankumar.in",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Google Sheets",
     ],
+    description:
+      "A personal brand and booking website for Vedic astrologer Pt. Kisan Kumar, with consultation booking, service pricing, sample reports and UPI payments.",
+
+    imageUrl:
+      "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1200&auto=format&fit=crop&q=80",
+
+    overview:
+      "Pt. Kisan Kumar is a Nadi Nakshatra, KP and Lal Kitab astrologer based in Bengaluru. The website presents his approach, services and client stories, and lets visitors book a free 30 minute consultation or buy readings online.",
+
+    problem:
+      "The astrologer wanted to move beyond social media enquiries and offer a trustworthy, professional way for clients to understand his services, see sample reports and book and pay online.",
+
+    solution:
+      "Built an elegant, Hindi and English friendly website with Next.js, TypeScript and Tailwind CSS. Consultation bookings and birth details are stored in Google Sheets, services are priced clearly with sample PDF reports, and payments are collected by UPI before confirming on WhatsApp.",
+
+    features: [
+      "Free 30 minute consultation booking by topic",
+      "Service catalogue with clear pricing",
+      "Sample report PDFs for each service",
+      "UPI payment and WhatsApp confirmation flow",
+      "Birth details and question form saved to Google Sheets",
+      "Client testimonials including video",
+      "About page with story and approach",
+      "SEO optimized with structured metadata",
+      "Mobile-first design in Hindi and English",
+    ],
+
     results: [
-      { value: "500+", label: "Students onboarded" },
-      { value: "70%", label: "Drop in WhatsApp queries" },
-      { value: "1", label: "Unified login for all materials" },
+      { value: "6", label: "Consultation Areas" },
+      { value: "24 hrs", label: "Reply Time" },
+      { value: "100%", label: "Mobile Responsive" },
     ],
   },
   {
-    slug: "pulsefit-membership",
-    name: "PulseFit Membership App",
-    category: "Mobile App",
-    technologies: ["React Native", "Spring Boot", "MySQL"],
+    slug: "ganga-amrit",
+    name: "Ganga Amrit",
+    category: "Business Website",
+    liveUrl: "https://gangaamrit.co.in",
+    technologies: ["Next.js", "Tailwind CSS", "MongoDB", "Vercel"],
     description:
-      "A membership management app for a gym chain, letting members book classes, track check-ins, and manage subscriptions.",
-    cloudinaryId: "", // e.g. "projects/pulsefit-membership"
+      "A modern business website for Ganga Amrit showcasing the company's products, services, and brand with a fast, responsive, and SEO-friendly user experience.",
+
+    cloudinaryId: "v1783761980/gangaamrit.png",
+
     overview:
-      "PulseFit is a React Native app where gym members view their membership status, book group classes, and check in via QR code, while gym staff manage class schedules and membership renewals from a web admin panel.",
+      "Ganga Amrit is a professionally designed corporate website that strengthens the company's digital presence by presenting its products, company information, and customer contact channels in an attractive and easy-to-navigate interface.",
+
     problem:
-      "The gym chain managed memberships on paper and class bookings via a shared notebook at the front desk, leading to overbooked classes and no easy way for members to check their membership status.",
+      "The business required a modern online platform to showcase its products, improve brand credibility, and provide customers with an easy way to learn about the company and get in touch.",
+
     solution:
-      "We built a React Native app for members (class booking, QR check-in, membership status) backed by a Spring Boot API and MySQL database, plus a web admin panel for staff to manage classes, capacity limits, and renewals.",
+      "Built a responsive website using Next.js and Tailwind CSS with optimized performance and SEO. The platform highlights company information, product offerings, contact details, and inquiry forms while delivering an excellent experience across desktop and mobile devices.",
+
     features: [
-      "Class booking with capacity limits and waitlists",
-      "QR code check-in at the front desk",
-      "Membership status and renewal reminders",
-      "Admin panel for class schedules and member management",
+      "Responsive mobile-first design",
+      "Product showcase pages",
+      "Company profile and about section",
+      "Contact and enquiry forms",
+      "SEO optimized pages",
+      "Fast page loading with Next.js",
+      "Image optimization",
+      "Google Maps integration",
+      "Clean and modern UI/UX",
     ],
+
     results: [
-      { value: "3", label: "Gym locations using the app" },
-      { value: "90%", label: "Classes booked via app" },
-      { value: "0", label: "Overbooked classes since launch" },
+      { value: "100%", label: "Responsive Design" },
+      { value: "SEO", label: "Optimized Website" },
+      { value: "Fast", label: "Performance Optimized" },
+    ],
+  },
+  {
+    slug: "face-recognition-attendance",
+    name: "Face Recognition Attendance System",
+    category: "AI & Education",
+    poweredByLexical: true,
+    technologies: [
+      "Next.js",
+      "Python",
+      "FastAPI",
+      "OpenCV",
+      "MongoDB",
+      "Shadcn UI",
+      "PRISMA",
+      "Tailwind",
+    ],
+    description:
+      "An AI-powered attendance management platform that automatically identifies students using facial recognition and records attendance in real time.",
+
+    cloudinaryId: "v1783762760/attandance-marking-platfrom.jpg",
+
+    overview:
+      "The Face Recognition Attendance System streamlines attendance management for educational institutions by replacing manual attendance with AI-based facial recognition. It provides a modern dashboard for managing students, attendance records, and real-time recognition results.",
+
+    problem:
+      "Traditional attendance methods are time-consuming, prone to proxy attendance, and require manual record keeping. Educational institutions needed a faster, more accurate, and automated solution.",
+
+    solution:
+      "Developed a full-stack attendance platform using Next.js for the frontend and FastAPI with OpenCV for facial recognition. Student face encodings are securely stored, allowing the system to recognize individuals through a webcam and automatically mark attendance in MongoDB with minimal user interaction.",
+
+    features: [
+      "AI-powered facial recognition",
+      "Automatic attendance marking",
+      "Student registration with face dataset",
+      "Real-time webcam detection",
+      "Attendance history and reports",
+      "Admin dashboard for student management",
+      "MongoDB database integration",
+      "Responsive dashboard for desktop and mobile",
+      "Secure REST API using FastAPI",
+    ],
+
+    results: [
+      { value: "95%+", label: "Recognition Accuracy" },
+      { value: "80%", label: "Reduced Attendance Time" },
+      { value: "100%", label: "Digital Attendance Records" },
     ],
   },
 ];
