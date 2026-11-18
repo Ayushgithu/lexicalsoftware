@@ -3,7 +3,10 @@ import { projects } from "@/data/projects";
 import ProjectCard from "@/components/shared/ProjectCard";
 
 export default function FeaturedProjects() {
-  const featured = projects.slice(0, 3);
+  // Featured projects first, then the rest in their original order.
+  const featured = [...projects]
+    .sort((a, b) => Number(!!b.featured) - Number(!!a.featured))
+    .slice(0, 3);
 
   return (
     <Section className="border-t border-line">

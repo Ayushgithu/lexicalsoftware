@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, ExternalLink, Zap } from "lucide-react";
 import { Section, SectionHeading, Pill } from "@/components/ui/primitives";
 import RemoteImage from "@/components/shared/RemoteImage";
 import { projects } from "@/data/projects";
@@ -49,7 +49,15 @@ export default async function ProjectDetailsPage({
 
         <div className="mt-6 flex flex-wrap items-start justify-between gap-6">
           <div>
-            <Pill>{project.category}</Pill>
+            <div className="flex flex-wrap items-center gap-2">
+              <Pill>{project.category}</Pill>
+              {project.poweredByLexical && (
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-lexical-gradient px-3 py-1 font-mono text-xs font-600 uppercase tracking-[0.12em] text-base">
+                  <Zap className="h-3 w-3 fill-base" />
+                  Powered by Lexical Software
+                </span>
+              )}
+            </div>
             <h1 className="mt-4 font-display text-4xl font-700 text-ink sm:text-5xl">
               {project.name}
             </h1>
@@ -57,7 +65,18 @@ export default async function ProjectDetailsPage({
               {project.description}
             </p>
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-md border border-lexical-orange px-5 py-2.5 font-display text-sm font-600 text-lexical-orange transition-transform hover:-translate-y-0.5"
+              >
+                Visit Live Site
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            )}
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 rounded-md bg-lexical-gradient px-5 py-2.5 font-display text-sm font-600 text-base transition-transform hover:-translate-y-0.5"
@@ -77,6 +96,7 @@ export default async function ProjectDetailsPage({
         <div className="mt-10 h-72 overflow-hidden rounded-xl border border-panel-border">
           <RemoteImage
             publicId={project.cloudinaryId ?? ""}
+            imageUrl={project.imageUrl}
             alt={`${project.name} screenshot`}
             width={1200}
             height={675}

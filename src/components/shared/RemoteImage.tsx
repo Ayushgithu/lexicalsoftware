@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 
 interface RemoteImageProps {
   publicId: string;
+  imageUrl?: string;
   alt: string;
   width?: number;
   height?: number;
@@ -17,12 +18,27 @@ interface RemoteImageProps {
 // layouts don't break before real images are uploaded.
 export default function RemoteImage({
   publicId,
+  imageUrl,
   alt,
   width = 800,
   height = 600,
   className,
   fallbackLabel,
 }: RemoteImageProps) {
+  // Cloudinary image wins when available; otherwise fall back to a temporary
+  // placeholder URL (imageUrl), then to the styled empty block.
+  if ((!publicId || !isCloudinaryConfigured()) && imageUrl) {
+    return (
+      <Image
+        src={imageUrl}
+        alt={alt}
+        width={width}
+        height={height}
+        className={cn("h-full w-full object-cover", className)}
+      />
+    );
+  }
+
   if (!publicId || !isCloudinaryConfigured()) {
     return (
       <div

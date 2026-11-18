@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, ExternalLink, Star, Zap } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { Pill } from "@/components/ui/primitives";
 import RemoteImage from "@/components/shared/RemoteImage";
@@ -21,6 +21,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           <div className="h-full w-full transition-transform duration-500 group-hover:scale-110">
             <RemoteImage
               publicId={project.cloudinaryId ?? ""}
+              imageUrl={project.imageUrl}
               alt={`${project.name} screenshot`}
               width={640}
               height={360}
@@ -32,6 +33,14 @@ export default function ProjectCard({ project }: { project: Project }) {
               <Star className="h-3 w-3 fill-lexical-amber text-lexical-amber" />
               <span className="font-mono text-xs font-600 uppercase tracking-[0.15em] text-lexical-amber">
                 Featured
+              </span>
+            </div>
+          )}
+          {project.poweredByLexical && (
+            <div className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-lexical-gradient px-3 py-1 shadow-lg shadow-black/30">
+              <Zap className="h-3 w-3 fill-base text-base" />
+              <span className="font-mono text-[10px] font-600 uppercase tracking-[0.12em] text-base">
+                Powered by Lexical Software
               </span>
             </div>
           )}
@@ -51,7 +60,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             <Pill key={tech}>{tech}</Pill>
           ))}
         </div>
-        <div className="mt-6 border-t border-line pt-4">
+        <div className="mt-6 flex items-center justify-between gap-3 border-t border-line pt-4">
           <Link
             href={`/portfolio/${project.slug}`}
             className="inline-flex items-center gap-1.5 font-mono text-xs text-ink-muted transition-colors group-hover:text-lexical-orange"
@@ -59,6 +68,17 @@ export default function ProjectCard({ project }: { project: Project }) {
             View Case Study
             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
           </Link>
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 font-mono text-xs text-lexical-orange transition-colors hover:text-lexical-amber"
+            >
+              Live Site
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+          )}
         </div>
       </div>
     </div>
