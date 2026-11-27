@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ExternalLink, Star, Zap } from "lucide-react";
 import type { Project } from "@/data/projects";
-import { Pill } from "@/components/ui/primitives";
+import TechBadge from "@/components/ui/TechBadge";
 import RemoteImage from "@/components/shared/RemoteImage";
 import { cn } from "@/lib/utils";
 
@@ -15,6 +15,9 @@ export default function ProjectCard({ project }: { project: Project }) {
           : "border-panel-border hover:border-lexical-orange/50"
       )}
     >
+      {project.poweredByLexical && (
+        <div className="absolute inset-x-0 top-0 z-20 h-0.5 bg-lexical-gradient" />
+      )}
       <div className="pointer-events-none absolute -top-10 right-0 z-10 h-32 w-32 rounded-full bg-node-glow opacity-70" />
       <Link href={`/portfolio/${project.slug}`} className="block">
         <div className="relative h-44 overflow-hidden border-b border-line">
@@ -26,6 +29,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               width={640}
               height={360}
               fallbackLabel={project.category}
+              className="object-top"
             />
           </div>
           {project.featured && (
@@ -37,10 +41,15 @@ export default function ProjectCard({ project }: { project: Project }) {
             </div>
           )}
           {project.poweredByLexical && (
-            <div className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-full bg-lexical-gradient px-3 py-1 shadow-lg shadow-black/30">
-              <Zap className="h-3 w-3 fill-base text-base" />
-              <span className="font-mono text-[10px] font-600 uppercase tracking-[0.12em] text-base">
-                Powered by Lexical Software
+            <div className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/60 py-1 pl-1 pr-3 shadow-lg backdrop-blur-md">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-lexical-gradient">
+                <Zap className="h-3 w-3 fill-white text-white" />
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-wider text-white/70">
+                Powered by
+              </span>
+              <span className="-ml-1 font-display text-[11px] font-700 text-white">
+                Lexical Software
               </span>
             </div>
           )}
@@ -57,7 +66,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
           {project.technologies.map((tech) => (
-            <Pill key={tech}>{tech}</Pill>
+            <TechBadge key={tech} name={tech} />
           ))}
         </div>
         <div className="mt-6 flex items-center justify-between gap-3 border-t border-line pt-4">

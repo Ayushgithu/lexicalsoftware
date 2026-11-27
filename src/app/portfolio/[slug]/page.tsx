@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, CheckCircle2, ExternalLink, Zap } from "lucide-react";
 import { Section, SectionHeading, Pill } from "@/components/ui/primitives";
+import TechBadge from "@/components/ui/TechBadge";
 import RemoteImage from "@/components/shared/RemoteImage";
 import { projects } from "@/data/projects";
 
@@ -52,9 +53,16 @@ export default async function ProjectDetailsPage({
             <div className="flex flex-wrap items-center gap-2">
               <Pill>{project.category}</Pill>
               {project.poweredByLexical && (
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-lexical-gradient px-3 py-1 font-mono text-xs font-600 uppercase tracking-[0.12em] text-base">
-                  <Zap className="h-3 w-3 fill-base" />
-                  Powered by Lexical Software
+                <span className="inline-flex items-center gap-2 rounded-full border border-lexical-orange/40 bg-lexical-orange/10 py-1 pl-1 pr-3.5">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-lexical-gradient">
+                    <Zap className="h-3.5 w-3.5 fill-white text-white" />
+                  </span>
+                  <span className="font-mono text-xs uppercase tracking-wider text-ink-muted">
+                    Powered by
+                  </span>
+                  <span className="-ml-1 font-display text-sm font-700 text-lexical-orange">
+                    Lexical Software
+                  </span>
                 </span>
               )}
             </div>
@@ -89,7 +97,7 @@ export default async function ProjectDetailsPage({
 
         <div className="mt-10 flex flex-wrap gap-2">
           {project.technologies.map((tech) => (
-            <Pill key={tech}>{tech}</Pill>
+            <TechBadge key={tech} name={tech} />
           ))}
         </div>
 
@@ -101,6 +109,7 @@ export default async function ProjectDetailsPage({
             width={1200}
             height={675}
             fallbackLabel="Screenshot placeholder"
+            className="object-top"
           />
         </div>
       </Section>
