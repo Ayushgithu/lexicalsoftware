@@ -54,10 +54,10 @@ export const projectTechnologies = [
   "TypeScript",
   "Google Sheets",
   "Cloudinary",
-  "Vercel",
   "Supabase",
   "Resend",
   "Firebase",
+  "Electron",
 ];
 
 export const projects: Project[] = [
@@ -121,7 +121,6 @@ export const projects: Project[] = [
       "TypeScript",
       "Tailwind CSS",
       "MongoDB",
-      "Vercel",
     ],
     description:
       "A modern healthcare website for Uday Clinic Jhansi that enables patients to learn about services, book appointments, and connect with doctors through a responsive web experience.",
@@ -145,7 +144,7 @@ export const projects: Project[] = [
       "Contact and enquiry forms",
       "Patient-friendly navigation",
       "SEO optimized pages",
-      "Fast deployment with Vercel",
+      "Fast, optimized page loading",
     ],
 
     results: [
@@ -213,6 +212,7 @@ export const projects: Project[] = [
       "Supabase",
       "Firebase",
       "Resend",
+      "Electron",
     ],
     description:
       "QR printing software for cyber cafes, xerox shops and CSC centers. Customers scan a QR, upload files from their phone, pay by UPI and the print comes out automatically.",
@@ -226,7 +226,7 @@ export const projects: Project[] = [
       "Cyber cafes and xerox shops were receiving files on WhatsApp and pen drives, which filled up storage, spread viruses, left customer documents on the PC and created long queues at rush hour.",
 
     solution:
-      "Built a complete SaaS with Next.js, TypeScript and Tailwind CSS, backed by MongoDB, Supabase and Firebase: a no-app customer upload page, a shop dashboard with live orders and a Windows print agent that sends jobs to the right printer. UPI payments go straight to the shop owner's own UPI ID with 0% commission, and files are deleted once the order is collected.",
+      "Built a complete SaaS with Next.js, TypeScript and Tailwind CSS, backed by MongoDB, Supabase and Firebase: a no-app customer upload page, a shop dashboard with live orders and a Windows print agent (built with Electron) that sends jobs to the right printer. UPI payments go straight to the shop owner's own UPI ID with 0% commission, and files are deleted once the order is collected.",
 
     features: [
       "Customer upload by QR scan, no app or login needed",

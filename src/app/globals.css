@@ -18,6 +18,24 @@
   scroll-behavior: smooth;
 }
 
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
 html,
 body {
   background-color: rgb(var(--color-base));
@@ -99,7 +117,7 @@ select:focus-visible {
   color: transparent;
 }
 
-/* Vivid colorful gradient \u2014 used for the pricing section headline only */
+/* Vivid colorful gradient — used for the pricing section headline only */
 .text-gradient-vivid {
   background-image: linear-gradient(90deg, #4f46e5 0%, #ec4899 100%);
   -webkit-background-clip: text;

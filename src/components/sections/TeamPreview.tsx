@@ -12,7 +12,7 @@ export default function TeamPreview() {
         align="center"
       />
 
-      <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-14 grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {team.slice(0, 3).map((member) => (
           <TeamCard key={member.slug} member={member} />
         ))}

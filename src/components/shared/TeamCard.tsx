@@ -14,7 +14,7 @@ export default function TeamCard({ member }: { member: TeamMember }) {
   const avail = availabilityConfig[member.availability];
 
   return (
-    <div className="group relative overflow-hidden rounded-xl border border-panel-border bg-panel p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-lexical-orange/50 hover:shadow-xl hover:shadow-blue-500/10">
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-panel-border bg-panel p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-lexical-orange/50 hover:shadow-xl hover:shadow-blue-500/10">
       <div className="pointer-events-none absolute -top-10 right-0 h-32 w-32 rounded-full bg-node-glow opacity-70" />
 
       {/* Avatar + availability */}
@@ -54,33 +54,35 @@ export default function TeamCard({ member }: { member: TeamMember }) {
         </p>
       </div>
 
-      {/* Footer */}
-      <div className="mt-6 flex items-center gap-3 border-t border-line pt-4">
-        <span className="font-mono text-xs text-ink-dim">
-          {member.experience}
-        </span>
-        <div className="ml-auto flex items-center gap-2">
-          <div className="flex items-center gap-1.5">
-            <a
-              href={`mailto:${member.email}`}
-              aria-label={`Email ${member.name}`}
-              className="flex h-8 w-8 items-center justify-center rounded-md border border-panel-border text-ink-muted transition-colors hover:border-lexical-orange hover:text-lexical-orange"
-            >
-              <Mail className="h-3.5 w-3.5" />
-            </a>
-            <CopyButton value={member.email} label={`${member.name}'s email`} />
+      {/* Footer (pinned to the bottom so all cards line up) */}
+      <div className="mt-auto pt-6">
+        <div className="flex items-center gap-3 border-t border-line pt-4">
+          <span className="font-mono text-xs text-ink-dim">
+            {member.experience}
+          </span>
+          <div className="ml-auto flex items-center gap-2">
+            <div className="flex items-center gap-1.5">
+              <a
+                href={`mailto:${member.email}`}
+                aria-label={`Email ${member.name}`}
+                className="flex h-8 w-8 items-center justify-center rounded-md border border-panel-border text-ink-muted transition-colors hover:border-lexical-orange hover:text-lexical-orange"
+              >
+                <Mail className="h-3.5 w-3.5" />
+              </a>
+              <CopyButton value={member.email} label={`${member.name}'s email`} />
+            </div>
+            {member.social.linkedin && (
+              <a
+                href={member.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${member.name}'s LinkedIn`}
+                className="flex h-8 w-8 items-center justify-center rounded-md border border-panel-border text-ink-muted transition-colors hover:border-lexical-orange hover:text-lexical-orange"
+              >
+                <LinkedinIcon className="h-3.5 w-3.5" />
+              </a>
+            )}
           </div>
-          {member.social.linkedin && (
-            <a
-              href={member.social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${member.name}'s LinkedIn`}
-              className="flex h-8 w-8 items-center justify-center rounded-md border border-panel-border text-ink-muted transition-colors hover:border-lexical-orange hover:text-lexical-orange"
-            >
-              <LinkedinIcon className="h-3.5 w-3.5" />
-            </a>
-          )}
         </div>
       </div>
     </div>

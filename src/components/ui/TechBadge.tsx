@@ -23,12 +23,13 @@ import {
   SiRedis,
   SiPhp,
   SiSpringboot,
+  SiElectron,
 } from "react-icons/si";
 import { cn } from "@/lib/utils";
 
-// Brand icon + colour for each technology. "currentColor" is used for
-// black/white brand marks so they stay visible in both light and dark mode.
-// Technologies not listed here (e.g. AWS, Java) simply render as text only.
+// Brand icon + colour for each technology. "currentColor" marks black/white
+// brand logos, which are drawn dark on the white circle.
+// Technologies not listed here (e.g. AWS, Java) render as text only.
 const techIcons: Record<string, { icon: IconType; color: string }> = {
   "next.js": { icon: SiNextdotjs, color: "currentColor" },
   typescript: { icon: SiTypescript, color: "#3178C6" },
@@ -53,7 +54,12 @@ const techIcons: Record<string, { icon: IconType; color: string }> = {
   redis: { icon: SiRedis, color: "#FF4438" },
   php: { icon: SiPhp, color: "#777BB4" },
   "spring boot": { icon: SiSpringboot, color: "#6DB33F" },
+  electron: { icon: SiElectron, color: "#47848F" },
 };
+
+function getTech(name: string): { icon: IconType; color: string } | undefined {
+  return techIcons[name.toLowerCase()];
+}
 
 export default function TechBadge({
   name,
@@ -62,22 +68,27 @@ export default function TechBadge({
   name: string;
   className?: string;
 }) {
-  const entry = techIcons[name.toLowerCase()];
+  const entry = getTech(name);
   const Icon = entry?.icon;
 
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-md border border-panel-border bg-base px-2.5 py-1 font-mono text-xs text-ink-muted",
+        "inline-flex items-center gap-2 rounded-full border border-panel-border bg-base py-1 pr-3 font-mono text-xs text-ink-muted transition-colors hover:border-lexical-orange/40 hover:text-ink",
+        Icon ? "pl-1" : "pl-3",
         className
       )}
     >
-      {Icon && (
-        <Icon
-          className="h-3.5 w-3.5 shrink-0 text-ink"
-          style={entry.color === "currentColor" ? undefined : { color: entry.color }}
-          aria-hidden="true"
-        />
+      {entry && Icon && (
+        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-slate-200">
+          <Icon
+            className="h-3 w-3"
+            style={{
+              color: entry.color === "currentColor" ? "#0f172a" : entry.color,
+            }}
+            aria-hidden="true"
+          />
+        </span>
       )}
       {name}
     </span>
