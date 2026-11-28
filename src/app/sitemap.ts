@@ -3,7 +3,7 @@ import { projects } from "@/data/projects";
 import { blogPosts } from "@/data/blog";
 import { jobOpenings } from "@/data/careers";
 
-const baseUrl = "https://lexicalsoftware.dev";
+const baseUrl = "https://lexicalsoftware.in";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
