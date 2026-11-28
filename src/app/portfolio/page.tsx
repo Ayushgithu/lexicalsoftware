@@ -1,12 +1,50 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Search } from "lucide-react";
+import { Briefcase, Search, Zap } from "lucide-react";
 import { Section, SectionHeading } from "@/components/ui/primitives";
 import { projects, projectCategories, projectTechnologies } from "@/data/projects";
 import ProjectCard from "@/components/shared/ProjectCard";
 import Reveal from "@/components/shared/Reveal";
 import { cn } from "@/lib/utils";
+
+function GroupHeading({
+  icon,
+  eyebrow,
+  title,
+  description,
+  accent,
+}: {
+  icon: React.ReactNode;
+  eyebrow: string;
+  title: string;
+  description: string;
+  accent?: boolean;
+}) {
+  return (
+    <div className="flex items-start gap-4">
+      <span
+        className={cn(
+          "flex h-10 w-10 shrink-0 items-center justify-center rounded-full",
+          accent
+            ? "bg-lexical-gradient text-white"
+            : "border border-panel-border bg-panel text-lexical-orange"
+        )}
+      >
+        {icon}
+      </span>
+      <div>
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-lexical-orange">
+          {eyebrow}
+        </p>
+        <h2 className="mt-1 font-display text-2xl font-700 text-ink">
+          {title}
+        </h2>
+        <p className="mt-1 max-w-2xl text-sm text-ink-muted">{description}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function PortfolioPage() {
   const [query, setQuery] = useState("");
@@ -25,6 +63,9 @@ export default function PortfolioPage() {
       return matchesQuery && matchesCategory && matchesTech;
     });
   }, [query, category, tech]);
+
+  const clientProjects = filtered.filter((p) => !p.poweredByLexical);
+  const lexicalProjects = filtered.filter((p) => p.poweredByLexical);
 
   return (
     <Section className="bg-grid">
@@ -97,18 +138,55 @@ export default function PortfolioPage() {
       </div>
 
       {/* Results */}
-      <div className="mt-14">
-        {filtered.length === 0 ? (
+      <div className="mt-14 space-y-20">
+        {filtered.length === 0 && (
           <p className="text-center font-mono text-sm text-ink-muted">
             No projects match those filters.
           </p>
-        ) : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((project, index) => (
-              <Reveal key={project.slug} delay={(index % 3) * 80}>
-                <ProjectCard project={project} />
-              </Reveal>
-            ))}
+        )}
+
+        {clientProjects.length > 0 && (
+          <div>
+            <GroupHeading
+              icon={<Briefcase className="h-4 w-4" />}
+              eyebrow="Client work"
+              title="Projects we built for clients"
+              description="Websites and web apps delivered for businesses, brands and professionals."
+            />
+            <div className="mt-8 grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {clientProjects.map((project, index) => (
+                <Reveal
+                  key={project.slug}
+                  delay={(index % 3) * 80}
+                  className="h-full"
+                >
+                  <ProjectCard project={project} />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {lexicalProjects.length > 0 && (
+          <div className="rounded-3xl border border-lexical-orange/30 bg-gradient-to-b from-lexical-orange/5 to-transparent p-5 sm:p-8">
+            <GroupHeading
+              icon={<Zap className="h-4 w-4 fill-current" />}
+              eyebrow="Powered by Lexical Software"
+              title="Our own products"
+              description="Platforms we designed, built and run ourselves under the Lexical Software brand."
+              accent
+            />
+            <div className="mt-8 grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {lexicalProjects.map((project, index) => (
+                <Reveal
+                  key={project.slug}
+                  delay={(index % 3) * 80}
+                  className="h-full"
+                >
+                  <ProjectCard project={project} />
+                </Reveal>
+              ))}
+            </div>
           </div>
         )}
       </div>

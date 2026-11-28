@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/shared/ScrollToTop";
+import SmoothScroll from "@/components/shared/SmoothScroll";
 import PageTransition from "@/components/shared/PageTransition";
 import SplashScreen from "@/components/shared/SplashScreen";
 import JsonLdScript from "@/components/shared/JsonLdScript";
@@ -158,6 +159,7 @@ export default function RootLayout({
         <JsonLdScript data={jsonLd} />
         <Analytics />
         <SpeedInsights />
+        <SmoothScroll />
         <SplashScreen />
         <Navbar />
         <NextTopLoader color="#2563EB" />

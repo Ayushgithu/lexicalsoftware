@@ -10,8 +10,8 @@ export interface Project {
   technologies: string[];
   description: string;
   cloudinaryId?: string;
-  // Temporary placeholder image (any https URL on an allowed host). Used only
-  // when cloudinaryId is empty. Replace later by setting cloudinaryId.
+  // Temporary placeholder image (https URL or local /images/... path).
+  // Used only when cloudinaryId is empty.
   imageUrl?: string;
   // Live website URL. Shows a "Live Site" link on card and detail page.
   liveUrl?: string;
@@ -40,7 +40,6 @@ export const projectCategories = [
 
 export const projectTechnologies = [
   "Next.js",
-  "React",
   "React Native",
   "Node.js",
   "Java",
@@ -55,52 +54,13 @@ export const projectTechnologies = [
   "TypeScript",
   "Google Sheets",
   "Cloudinary",
-  "Vercel",
+  "Supabase",
+  "Resend",
+  "Firebase",
+  "Electron",
 ];
 
 export const projects: Project[] = [
-{
-  slug: "uday-clinic-jhansi",
-  name: "Uday Clinic Jhansi",
-  category: "Healthcare",
-  featured: true,
-  technologies: [
-    "Next.js",
-    "MongoDB",
-    "Tailwind CSS",
-    "Vercel"
-  ],
-  description:
-    "A modern healthcare website for Uday Clinic Jhansi that enables patients to learn about services, book appointments, and connect with doctors through a responsive web experience.",
-
-  cloudinaryId: "v1782394054/hospital-landing-page-image.png",
-
-  overview:
-    "Uday Clinic Jhansi is a complete healthcare platform designed to improve the clinic's online presence. The website provides information about doctors, medical services, clinic facilities, and allows patients to book appointments through a clean and mobile-friendly interface.",
-
-  problem:
-    "The clinic lacked a professional online platform for showcasing its services and managing patient appointment requests, making it difficult for new patients to access information and contact the clinic.",
-
-  solution:
-    "Developed a responsive healthcare website using Next.js and Tailwind CSS with MongoDB integration. The platform includes online appointment booking, doctor profiles, service information, contact forms, and an admin-friendly backend for managing patient requests.",
-
-  features: [
-    "Online appointment booking",
-    "Doctor profile and specialization pages",
-    "Medical services showcase",
-    "Responsive design for all devices",
-    "Contact and enquiry forms",
-    "Patient-friendly navigation",
-    "SEO optimized pages",
-    "Fast deployment with Vercel"
-  ],
-
-  results: [
-    { value: "100%", label: "Responsive Design" },
-    { value: "24/7", label: "Appointment Requests" },
-    { value: "SEO", label: "Optimized Website" }
-  ]
-},
   {
     slug: "the-aaruh",
     name: "The Aaruh",
@@ -109,7 +69,6 @@ export const projects: Project[] = [
     liveUrl: "https://theaaruh.in",
     technologies: [
       "Next.js",
-      "React",
       "TypeScript",
       "Tailwind CSS",
       "MongoDB",
@@ -119,8 +78,7 @@ export const projects: Project[] = [
     description:
       "A full-fledged e-commerce store for The Aaruh, a handcrafted ethnic and everyday wear brand, with a complete admin dashboard to manage products, orders, banners and customers.",
 
-    imageUrl:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&auto=format&fit=crop&q=80",
+    imageUrl: "/images/projects/the-aaruh.webp",
 
     overview:
       "The Aaruh is a clothing brand from Gurgaon selling suit sets, sarees, co-ords, kids wear and twinning wear. We built the complete online store along with a custom admin dashboard, so the owner can run the entire business, from catalogue to deliveries, without any technical help.",
@@ -157,11 +115,17 @@ export const projects: Project[] = [
     category: "Healthcare",
     featured: true,
     poweredByLexical: true,
-    technologies: ["Next.js", "MongoDB", "Tailwind CSS", "Vercel"],
+    liveUrl: "https://udayclinic.lexicalsoftware.in",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "MongoDB",
+    ],
     description:
       "A modern healthcare website for Uday Clinic Jhansi that enables patients to learn about services, book appointments, and connect with doctors through a responsive web experience.",
 
-    cloudinaryId: "v1782394054/hospital-landing-page-image.png",
+    imageUrl: "/images/projects/uday-clinic.webp",
 
     overview:
       "Uday Clinic Jhansi is a complete healthcare platform designed to improve the clinic's online presence. The website provides information about doctors, medical services, clinic facilities, and allows patients to book appointments through a clean and mobile-friendly interface.",
@@ -170,7 +134,7 @@ export const projects: Project[] = [
       "The clinic lacked a professional online platform for showcasing its services and managing patient appointment requests, making it difficult for new patients to access information and contact the clinic.",
 
     solution:
-      "Developed a responsive healthcare website using Next.js and Tailwind CSS with MongoDB integration. The platform includes online appointment booking, doctor profiles, service information, contact forms, and an admin-friendly backend for managing patient requests.",
+      "Developed a responsive healthcare website using Next.js, TypeScript and Tailwind CSS with MongoDB integration. The platform includes online appointment booking, doctor profiles, service information, contact forms, and an admin-friendly backend for managing patient requests.",
 
     features: [
       "Online appointment booking",
@@ -180,7 +144,7 @@ export const projects: Project[] = [
       "Contact and enquiry forms",
       "Patient-friendly navigation",
       "SEO optimized pages",
-      "Fast deployment with Vercel",
+      "Fast, optimized page loading",
     ],
 
     results: [
@@ -196,16 +160,15 @@ export const projects: Project[] = [
     liveUrl: "https://socialbugmedia.in",
     technologies: [
       "Next.js",
-      "React",
       "TypeScript",
       "Tailwind CSS",
       "Google Sheets",
+      "Resend",
     ],
     description:
       "A bold, animated website for SocialBug Media, a creator-led influencer marketing agency, showcasing services, campaign case studies and a creator network of 1000+ influencers.",
 
-    imageUrl:
-      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&auto=format&fit=crop&q=80",
+    imageUrl: "/images/projects/socialbug-media.webp",
 
     overview:
       "SocialBug Media helps SaaS companies, startups and consumer brands grow through a curated network of 1000+ creators across LinkedIn, X, Instagram and YouTube. The website is the agency's main sales tool, built to convert brand visitors into campaign enquiries in two minutes.",
@@ -214,7 +177,7 @@ export const projects: Project[] = [
       "The agency needed a site that matched the energy of its brand, proved its reach with real campaigns and brand logos, and made it easy for both brands and creators to get in touch.",
 
     solution:
-      "Designed and built a dark, motion-rich website with Next.js, TypeScript and Tailwind CSS. Service pages, case studies, testimonials and a creator onboarding form are all included, and every enquiry and creator application is saved directly into Google Sheets so the team can follow up instantly.",
+      "Designed and built a dark, motion-rich website with Next.js, TypeScript and Tailwind CSS. Service pages, case studies, testimonials and a creator onboarding form are all included, and every enquiry and creator application is saved directly into Google Sheets, with instant email alerts sent through Resend, so the team can follow up quickly.",
 
     features: [
       "Animated hero and scrolling creator and brand showcases",
@@ -224,6 +187,7 @@ export const projects: Project[] = [
       "Quick 2-minute brand enquiry form",
       "Creator sign-up form (Get Listed as a Creator)",
       "Google Sheets integration for leads and applications",
+      "Instant email alerts for new enquiries via Resend",
       "SEO optimized pages with rich metadata",
       "Fully responsive, performance focused design",
     ],
@@ -242,16 +206,18 @@ export const projects: Project[] = [
     liveUrl: "https://qr.lexicalsoftware.in",
     technologies: [
       "Next.js",
-      "React",
       "TypeScript",
       "Tailwind CSS",
-      "Google Sheets",
+      "MongoDB",
+      "Supabase",
+      "Firebase",
+      "Resend",
+      "Electron",
     ],
     description:
       "QR printing software for cyber cafes, xerox shops and CSC centers. Customers scan a QR, upload files from their phone, pay by UPI and the print comes out automatically.",
 
-    imageUrl:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80",
+    imageUrl: "/images/projects/qrtoprint.webp",
 
     overview:
       "QRtoPrint removes the queue from print counters. Customers scan the shop's QR code, upload PDFs or photos from the phone browser, choose print options, pay and collect their pages, while the shop owner manages everything from a live dashboard.",
@@ -260,7 +226,7 @@ export const projects: Project[] = [
       "Cyber cafes and xerox shops were receiving files on WhatsApp and pen drives, which filled up storage, spread viruses, left customer documents on the PC and created long queues at rush hour.",
 
     solution:
-      "Built a complete SaaS with Next.js, TypeScript and Tailwind CSS: a no-app customer upload page, a shop dashboard with live orders and a Windows print agent that sends jobs to the right printer. UPI payments go straight to the shop owner's own UPI ID with 0% commission, and files are deleted once the order is collected.",
+      "Built a complete SaaS with Next.js, TypeScript and Tailwind CSS, backed by MongoDB, Supabase and Firebase: a no-app customer upload page, a shop dashboard with live orders and a Windows print agent (built with Electron) that sends jobs to the right printer. UPI payments go straight to the shop owner's own UPI ID with 0% commission, and files are deleted once the order is collected.",
 
     features: [
       "Customer upload by QR scan, no app or login needed",
@@ -274,6 +240,7 @@ export const projects: Project[] = [
       "Downloadable QR poster for the shop counter",
       "Hindi and English customer interface",
       "Daily earnings and orders overview",
+      "Email notifications powered by Resend",
     ],
 
     results: [
@@ -290,16 +257,14 @@ export const projects: Project[] = [
     liveUrl: "https://pradeepcsc.lexicalsoftware.in",
     technologies: [
       "Next.js",
-      "React",
       "TypeScript",
       "Tailwind CSS",
-      "Google Sheets",
+      "Resend",
     ],
     description:
       "A digital service portal for Pradeep CSC that lists government and banking services, takes online service requests and offers free tools like image merge and scan to PDF.",
 
-    imageUrl:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&auto=format&fit=crop&q=80",
+    imageUrl: "/images/projects/pradeep-csc.webp",
 
     overview:
       "Pradeep CSC & Digital Seva Kendra is a local Common Service Centre in Mahoba, Uttar Pradesh, serving citizens with Aadhaar, PAN, banking, passport, insurance and certificate services. The website brings the centre online and adds handy tools that bring people back.",
@@ -308,11 +273,11 @@ export const projects: Project[] = [
       "The centre depended on walk-in customers and word of mouth. Citizens had no easy way to see available services, send a request or prepare documents like Aadhaar scans in the right size before visiting.",
 
     solution:
-      "Built a fast, mobile-first portal with Next.js, TypeScript and Tailwind CSS. Visitors can browse services, book a service request that lands in Google Sheets, and use free utilities such as Merge Two Image, Scan to PDF and a Passbook tool.",
+      "Built a fast, mobile-first portal with Next.js, TypeScript and Tailwind CSS. Visitors can browse services, send a service request that reaches the centre instantly by email through Resend, and use free utilities such as Merge Two Image, Scan to PDF and a Passbook tool.",
 
     features: [
       "Service pages for Aadhaar, PAN, banking, passport, insurance and certificates",
-      "Book a Service request form saved to Google Sheets",
+      "Book a Service request form with instant email notification via Resend",
       "Merge Two Image tool to combine card front and back under 100 KB",
       "Scan to PDF tool for multiple documents",
       "Passbook tool",
@@ -335,16 +300,15 @@ export const projects: Project[] = [
     liveUrl: "https://ptnkishankumar.in",
     technologies: [
       "Next.js",
-      "React",
       "TypeScript",
       "Tailwind CSS",
       "Google Sheets",
+      "Resend",
     ],
     description:
       "A personal brand and booking website for Vedic astrologer Pt. Kisan Kumar, with consultation booking, service pricing, sample reports and UPI payments.",
 
-    imageUrl:
-      "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1200&auto=format&fit=crop&q=80",
+    imageUrl: "/images/projects/pt-kisan-kumar.webp",
 
     overview:
       "Pt. Kisan Kumar is a Nadi Nakshatra, KP and Lal Kitab astrologer based in Bengaluru. The website presents his approach, services and client stories, and lets visitors book a free 30 minute consultation or buy readings online.",
@@ -353,14 +317,14 @@ export const projects: Project[] = [
       "The astrologer wanted to move beyond social media enquiries and offer a trustworthy, professional way for clients to understand his services, see sample reports and book and pay online.",
 
     solution:
-      "Built an elegant, Hindi and English friendly website with Next.js, TypeScript and Tailwind CSS. Consultation bookings and birth details are stored in Google Sheets, services are priced clearly with sample PDF reports, and payments are collected by UPI before confirming on WhatsApp.",
+      "Built an elegant, Hindi and English friendly website with Next.js, TypeScript and Tailwind CSS. Consultation bookings and birth details are stored in Google Sheets and sent by email through Resend, services are priced clearly with sample PDF reports, and payments are collected by UPI before confirming on WhatsApp.",
 
     features: [
       "Free 30 minute consultation booking by topic",
       "Service catalogue with clear pricing",
       "Sample report PDFs for each service",
       "UPI payment and WhatsApp confirmation flow",
-      "Birth details and question form saved to Google Sheets",
+      "Birth details and question form saved to Google Sheets with email alerts via Resend",
       "Client testimonials including video",
       "About page with story and approach",
       "SEO optimized with structured metadata",
@@ -378,7 +342,11 @@ export const projects: Project[] = [
     name: "Ganga Amrit",
     category: "Business Website",
     liveUrl: "https://gangaamrit.co.in",
-    technologies: ["Next.js", "Tailwind CSS", "MongoDB", "Vercel"],
+    technologies: [
+      "Next.js",
+      "Tailwind CSS",
+      "Resend",
+    ],
     description:
       "A modern business website for Ganga Amrit showcasing the company's products, services, and brand with a fast, responsive, and SEO-friendly user experience.",
 
@@ -397,7 +365,7 @@ export const projects: Project[] = [
       "Responsive mobile-first design",
       "Product showcase pages",
       "Company profile and about section",
-      "Contact and enquiry forms",
+      "Contact and enquiry forms with email delivery via Resend",
       "SEO optimized pages",
       "Fast page loading with Next.js",
       "Image optimization",
@@ -416,20 +384,21 @@ export const projects: Project[] = [
     name: "Face Recognition Attendance System",
     category: "AI & Education",
     poweredByLexical: true,
+    liveUrl: "https://www.face.lexicalsoftware.in",
     technologies: [
       "Next.js",
-      "Python",
-      "FastAPI",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "Resend",
       "OpenCV",
-      "MongoDB",
       "Shadcn UI",
-      "PRISMA",
-      "Tailwind",
+      "Prisma",
     ],
     description:
       "An AI-powered attendance management platform that automatically identifies students using facial recognition and records attendance in real time.",
 
-    cloudinaryId: "v1783762760/attandance-marking-platfrom.jpg",
+    imageUrl: "/images/projects/face-attendance.webp",
 
     overview:
       "The Face Recognition Attendance System streamlines attendance management for educational institutions by replacing manual attendance with AI-based facial recognition. It provides a modern dashboard for managing students, attendance records, and real-time recognition results.",
@@ -438,7 +407,7 @@ export const projects: Project[] = [
       "Traditional attendance methods are time-consuming, prone to proxy attendance, and require manual record keeping. Educational institutions needed a faster, more accurate, and automated solution.",
 
     solution:
-      "Developed a full-stack attendance platform using Next.js for the frontend and FastAPI with OpenCV for facial recognition. Student face encodings are securely stored, allowing the system to recognize individuals through a webcam and automatically mark attendance in MongoDB with minimal user interaction.",
+      "Developed a full-stack attendance platform using Next.js and TypeScript with OpenCV-based facial recognition. Students register once with a live photo, and the system then recognizes them through a webcam or phone camera and automatically marks attendance in Supabase with minimal user interaction. Resend delivers email notifications.",
 
     features: [
       "AI-powered facial recognition",
@@ -447,9 +416,11 @@ export const projects: Project[] = [
       "Real-time webcam detection",
       "Attendance history and reports",
       "Admin dashboard for student management",
-      "MongoDB database integration",
+      "Supabase database integration",
       "Responsive dashboard for desktop and mobile",
-      "Secure REST API using FastAPI",
+      "Secure API routes built with Next.js and TypeScript",
+      "Separate Student and Admin / Teacher sign in",
+      "Email notifications with Resend",
     ],
 
     results: [
